@@ -5,6 +5,7 @@ export default class ExampleClasse extends Component {
     return (
       <div>
         <div className='flex justify-center text-blod text-teal-500 underline underline-offset-2'>Voici classe parametres sur budget </div>
+        <h1 className='text-orange-400 text-center'>Hello parametr page budget famille</h1>
       </div>
     )
   }
