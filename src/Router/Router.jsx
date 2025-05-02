@@ -8,6 +8,7 @@ import DonneeDepense from '../components/Depense/DonneeDepense';
 import DonneeRevenue from '../components/Revenue/DonneeRevenue';
 import Famille from '../components/Famille/Famille';
 import ExampleClasse from '../components/Parametre';
+import Budget from '../components/Budget';
 
 function Router() {
   return (
@@ -21,6 +22,7 @@ function Router() {
           <Route path='revenue' element={<DonneeRevenue/>}/>
           <Route path='famille' element={<Famille/>}/>
           <Route path='parametre' element={<ExampleClasse/>}/>
+          <Route path='budget' element={<Budget/>}/>
 
         </Route>
       </Routes>
