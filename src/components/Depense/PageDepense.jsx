@@ -182,16 +182,16 @@ function PageDepense() {
         </motion.div>  
      </motion.div>
      <Modal open={open} onClose={()=>setOpen(false)}>
-      <div className='container  justify-center  w-[800px] h-[500px]'>
-       <h1 className="text-xl font-bold underline underline-offset-8  text-center"> Detail de budget mensuel</h1> 
-       <div className="p-3 py-2 text-start px-[150px]">
-        <DetailDepense/>
-       </div>
-       <div className="p-3 py-2 text-start px-[150px]">
-        <DetailRevenue/>
-       </div>
-      </div>
-     </Modal>
+  <div className='container flex flex-col items-center w-full h-full md:w-[800px] md:h-[500px] p-4 md:p-0'>
+    <h1 className="text-xl font-bold underline underline-offset-8 text-center mb-4"> Détail de budget mensuel</h1>
+    <div className="w-full md:px-[150px] mb-4">
+      <DetailDepense/>
+    </div>
+    <div className="w-full md:px-[150px]">
+      <DetailRevenue/>
+    </div>
+  </div>
+</Modal>
     </div>
   )
 }
