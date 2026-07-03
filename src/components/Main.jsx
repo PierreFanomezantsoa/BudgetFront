@@ -1,123 +1,110 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function Home() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Tentative de connexion avec:', { email, password });
-    // Logique d'authentification à implémenter
+
+    if (email.trim() && password.trim()) {
+      navigate("/dashboard");
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Application Budget Familial
-        </h2>
-        <p className="mt-2 text-center text-sm text-gray-600">
-          Connectez-vous à votre compte
-        </p>
-      </div>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-600 via-cyan-500 to-slate-900 p-4 sm:p-6">
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form className="space-y-6" onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                Adresse email
-              </label>
-              <div className="mt-1">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                  placeholder="emailadresse@gmail.com"
-                />
-              </div>
-            </div>
+      {/* CARD */}
+      <div className="w-full max-w-sm sm:max-w-md bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8">
 
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Mot de passe
-              </label>
-              <div className="mt-1">
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="current-password"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                />
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <input
-                  id="remember-me"
-                  name="remember-me"
-                  type="checkbox"
-                  className="h-4 w-4 text-teal-500 focus:ring-teal-400 border-gray-300 rounded-md"
-                />
-                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
-                  Se souvenir de moi
-                </label>
-              </div>
-
-              <div className="text-sm">
-                <a href="#" className=" text-teal-500 hover:text-blue-300">
-                  Mot de passe oublié?
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <button
-                type="submit"
-                className="w-full flex 
-                justify-center py-2 px-4 border
-                 border-transparent rounded-md 
-                 shadow-sm text-sm font-serif font-bold
-                  text-white bg-teal-400 hover:bg-teal-300 
-                  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-300"
-              >
-                <Link to={"/dashaboard"}>Séconecter</Link>
-              </button>
-            </div>
-          </form>
-
-          <div className="mt-6">
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300"></div>
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-green-500">Ou</span>
-              </div>
-            </div>
-
-            <div className="mt-6">
-              <button
-                type="button"
-                className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-serif
-                 text-blue-500 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-              >
-                S'inscrire
-              </button>
-            </div>
-          </div>
+        {/* HEADER */}
+        <div className="text-center mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-800">
+            Budget Familial
+          </h1>
+          <p className="text-gray-500 mt-2 text-sm sm:text-base">
+            Connectez-vous à votre compte
+          </p>
         </div>
+
+        {/* FORM */}
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+
+          {/* EMAIL */}
+          <div>
+            <label className="text-sm font-medium text-gray-700">
+              Adresse email
+            </label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="exemple@gmail.com"
+              className="w-full mt-1 px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base rounded-xl border border-gray-300 focus:ring-2 focus:ring-teal-500 outline-none transition"
+              required
+            />
+          </div>
+
+          {/* PASSWORD */}
+          <div>
+            <label className="text-sm font-medium text-gray-700">
+              Mot de passe
+            </label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••"
+              className="w-full mt-1 px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base rounded-xl border border-gray-300 focus:ring-2 focus:ring-teal-500 outline-none transition"
+              required
+            />
+          </div>
+
+          {/* OPTIONS */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm">
+
+            <label className="flex items-center gap-2 text-gray-600">
+              <input type="checkbox" className="accent-teal-500" />
+              Se souvenir de moi
+            </label>
+
+            <Link
+              to="/forgot-password"
+              className="text-teal-600 hover:text-teal-800 transition"
+            >
+              Mot de passe oublié ?
+            </Link>
+
+          </div>
+
+          {/* BUTTON */}
+          <button
+            type="submit"
+            className="w-full py-3 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-semibold shadow-lg hover:scale-[1.02] active:scale-[0.98] transition"
+          >
+            Se connecter
+          </button>
+
+        </form>
+
+        {/* SEPARATOR */}
+        <div className="my-5 sm:my-6 flex items-center gap-3">
+          <div className="flex-1 h-px bg-gray-200"></div>
+          <span className="text-xs sm:text-sm text-gray-400">ou</span>
+          <div className="flex-1 h-px bg-gray-200"></div>
+        </div>
+
+        {/* REGISTER */}
+        <Link
+          to="/register"
+          className="block text-center w-full py-3 rounded-xl border border-gray-300 text-gray-700 hover:bg-gray-100 transition font-medium text-sm sm:text-base"
+        >
+          S'inscrire
+        </Link>
+
       </div>
     </div>
   );

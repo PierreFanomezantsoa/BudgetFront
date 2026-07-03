@@ -1,19 +1,27 @@
-import { Outlet } from 'react-router-dom';
-import Mysidbar from "./components/sidbar";
-import MytopBar from './components/topBar';
+import { Outlet } from "react-router-dom";
+import Sidebar from "./components/sidbar";
+import MytopBar from "./components/topBar";
 
 function App() {
   return (
-    <div className="flex h-screen">
-      <div className="w-1/5 bg-gray-300">
-        <Mysidbar />
-      </div>
+    <div className="flex h-screen bg-gray-100 overflow-hidden">
 
-      <div className="flex-1 flex flex-col">
-        <MytopBar />
-        <div className="flex-1 p-4 overflow-y-auto">
-          <Outlet />
+      {/* SIDEBAR */}
+      <Sidebar />
+
+      {/* MAIN */}
+      <div className="flex flex-col flex-1 min-w-0">
+
+        {/* TOPBAR */}
+        <div className="sticky top-0 z-10">
+          <MytopBar />
         </div>
+
+        {/* CONTENT */}
+        <main className="flex-1 overflow-y-auto p-4">
+          <Outlet />
+        </main>
+
       </div>
     </div>
   );
